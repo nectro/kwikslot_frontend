@@ -131,44 +131,52 @@ export default function ServicesPage() {
   const renderGridCard = (service: Service) => (
     <Card
       key={service.id}
-      className="h-full hover:shadow-md transition-shadow"
+      className="h-full hover:shadow-lg transition-all duration-200 border-0 shadow-sm"
       extra={
         <Dropdown menu={getActionMenu(service)} trigger={['click']}>
-          <Button type="text" icon={<MoreOutlined />} />
+          <Button type="text" icon={<MoreOutlined />} className="text-gray-400 hover:text-gray-600" />
         </Dropdown>
       }
     >
-      <div className="text-center">
-        <div className="w-16 h-16 mx-auto mb-3 bg-brand-primary bg-opacity-20 rounded-full flex items-center justify-center">
-          <span className="text-2xl text-brand-primary">
-            {service.name.charAt(0)}
-          </span>
-        </div>
-
-        <h3 className="font-semibold text-lg mb-1 font-quicksand">{service.name}</h3>
-        <p className="text-gray-500 mb-3">{service.category}</p>
-
-        <div className="space-y-2 mb-4">
-          <div className="flex items-center justify-center gap-2">
-            <DollarOutlined className="text-gray-400" />
-            <span className="font-semibold text-brand-primary">${service.price}</span>
+      <div className="flex flex-col h-full">
+        {/* Header Section */}
+        <div className="text-center mb-3">
+          <div className="w-12 h-12 mx-auto mb-2 bg-gradient-to-br from-brand-primary to-blue-400 rounded-full flex items-center justify-center shadow-lg">
+            <span className="text-lg text-white font-semibold">
+              {service.name.charAt(0)}
+            </span>
           </div>
-          <div className="flex items-center justify-center gap-2">
-            <ClockCircleOutlined className="text-gray-400" />
-            <span className="text-sm text-gray-600">{service.duration} min</span>
+          <h3 className="font-semibold text-lg mb-1 font-quicksand text-gray-800">{service.name}</h3>
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <p className="text-sm text-gray-600 font-medium">{service.category}</p>
+            <Tag color={service.status === 'active' ? 'green' : 'red'} className="text-xs">
+              {service.status.toUpperCase()}
+            </Tag>
           </div>
-        </div>
-
-        <div className="mb-3 space-x-2">
-          <Tag color={service.status === 'active' ? 'green' : 'red'}>
-            {service.status.toUpperCase()}
-          </Tag>
-          <Tag color={getPopularityColor(service.popularity)}>
-            {service.popularity.toUpperCase()}
+          <Tag color={getPopularityColor(service.popularity)} className="text-xs mb-2">
+            {service.popularity.toUpperCase()} DEMAND
           </Tag>
         </div>
 
-        <p className="text-sm text-gray-600">{service.description}</p>
+        {/* Price and Duration Section */}
+        <div className="bg-gray-50 rounded-lg p-3 mb-3">
+          <div className="flex items-center justify-between">
+            <div className="text-center flex-1">
+              <div className="text-xl font-bold text-brand-primary">${service.price}</div>
+              <div className="text-xs text-gray-500 uppercase font-medium">Price</div>
+            </div>
+            <div className="w-px h-6 bg-gray-300"></div>
+            <div className="text-center flex-1">
+              <div className="text-xl font-bold text-gray-700">{service.duration}</div>
+              <div className="text-xs text-gray-500 uppercase font-medium">Minutes</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Description */}
+        <div className="flex-1 px-1">
+          <p className="text-xs text-gray-600 line-clamp-3">{service.description}</p>
+        </div>
       </div>
     </Card>
   );
@@ -176,41 +184,50 @@ export default function ServicesPage() {
   const renderListCard = (service: Service) => (
     <Card
       key={service.id}
-      className="mb-4 hover:shadow-md transition-shadow"
+      className="mb-3 hover:shadow-lg transition-all duration-200 border-0 shadow-sm"
       extra={
         <Dropdown menu={getActionMenu(service)} trigger={['click']}>
-          <Button type="text" icon={<MoreOutlined />} />
+          <Button type="text" icon={<MoreOutlined />} className="text-gray-400 hover:text-gray-600" />
         </Dropdown>
       }
     >
-      <div className="flex items-start gap-4">
-        <div className="w-16 h-16 bg-brand-primary bg-opacity-20 rounded-full flex items-center justify-center flex-shrink-0">
-          <span className="text-xl text-brand-primary">
+      <div className="flex items-start gap-3">
+        {/* Service Icon */}
+        <div className="w-12 h-12 bg-gradient-to-br from-brand-primary to-blue-400 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+          <span className="text-lg text-white font-semibold">
             {service.name.charAt(0)}
           </span>
         </div>
 
-        <div className="flex-1">
+        {/* Main Content */}
+        <div className="flex-1 min-w-0">
+          {/* Header Row */}
           <div className="flex items-start justify-between mb-2">
-            <div>
-              <h3 className="font-semibold text-lg mb-1 font-quicksand">{service.name}</h3>
-              <p className="text-gray-500">{service.category}</p>
+            <div className="min-w-0 flex-1">
+              <h3 className="font-semibold text-lg mb-1 font-quicksand text-gray-800 truncate">{service.name}</h3>
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-sm text-gray-600 font-medium">{service.category}</span>
+                <div className="flex gap-1">
+                  <Tag color={service.status === 'active' ? 'green' : 'red'} className="text-xs">
+                    {service.status.toUpperCase()}
+                  </Tag>
+                  <Tag color={getPopularityColor(service.popularity)} className="text-xs">
+                    {service.popularity.toUpperCase()}
+                  </Tag>
+                </div>
+              </div>
             </div>
-            <div className="text-right">
-              <div className="font-semibold text-lg text-brand-primary">${service.price}</div>
-              <div className="text-sm text-gray-500">{service.duration} minutes</div>
+            
+            {/* Price and Duration */}
+            <div className="bg-gray-50 rounded-lg p-2 ml-3 text-center min-w-0">
+              <div className="text-lg font-bold text-brand-primary">${service.price}</div>
+              <div className="text-xs text-gray-500">{service.duration} min</div>
             </div>
           </div>
 
-          <p className="text-gray-600 mb-3">{service.description}</p>
-
-          <div className="flex items-center gap-2">
-            <Tag color={service.status === 'active' ? 'green' : 'red'}>
-              {service.status.toUpperCase()}
-            </Tag>
-            <Tag color={getPopularityColor(service.popularity)}>
-              {service.popularity.toUpperCase()} DEMAND
-            </Tag>
+          {/* Description */}
+          <div className="bg-gray-50 rounded-lg p-2">
+            <p className="text-gray-600 text-sm leading-relaxed">{service.description}</p>
           </div>
         </div>
       </div>
@@ -254,7 +271,6 @@ export default function ServicesPage() {
                 />
               </Space.Compact>
               <Button
-                type="primary"
                 icon={<PlusOutlined />}
                 className='flex-1'
                 onClick={handleAdd}

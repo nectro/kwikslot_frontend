@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Card, Row, Col, Button, Avatar, Tag, Space, Dropdown, Modal, Form, Input, Select } from 'antd';
-import { PlusOutlined, AppstoreOutlined, UnorderedListOutlined, MoreOutlined, EditOutlined, DeleteOutlined, PhoneOutlined, MailOutlined } from '@ant-design/icons';
+import { PlusOutlined, AppstoreOutlined, UnorderedListOutlined, MoreOutlined, EditOutlined, DeleteOutlined, PhoneOutlined, MailOutlined, UserOutlined } from '@ant-design/icons';
 import StaffFilters from '@/components/staff/StaffFilters';
 
 interface Staff {
@@ -113,43 +113,53 @@ export default function StaffPage() {
   const renderGridCard = (staffMember: Staff) => (
     <Card
       key={staffMember.id}
-      className="h-full hover:shadow-md transition-shadow"
+      className="h-full hover:shadow-lg transition-all duration-200 border-0 shadow-sm"
       extra={
         <Dropdown menu={getActionMenu(staffMember)} trigger={['click']}>
-          <Button type="text" icon={<MoreOutlined />} />
+          <Button type="text" icon={<MoreOutlined />} className="text-gray-400 hover:text-gray-600" />
         </Dropdown>
       }
     >
-      <div className="text-center">
-        <Avatar size={64} className="mb-3 bg-brand-primary bg-opacity-20 text-brand-primary">
-          {staffMember.name.split(' ').map(n => n[0]).join('')}
-        </Avatar>
-        <h3 className="font-semibold text-lg mb-1 font-quicksand">{staffMember.name}</h3>
-        <p className="text-gray-500 mb-3">{staffMember.role}</p>
-
-        <div className="space-y-2 mb-4">
-          <div className="text-sm text-gray-600">
-            <MailOutlined className="mr-2" />
-            {staffMember.email}
-          </div>
-          <div className="text-sm text-gray-600">
-            <PhoneOutlined className="mr-2" />
-            {staffMember.phone}
-          </div>
-        </div>
-
-        <div className="mb-3">
-          <Tag color={staffMember.status === 'active' ? 'green' : 'red'}>
-            {staffMember.status.toUpperCase()}
-          </Tag>
-        </div>
-
-        <div className="space-y-1">
-          {staffMember.specialties.map(specialty => (
-            <Tag key={specialty} color="blue" className="mb-1">
-              {specialty}
+      <div className="flex flex-col h-full">
+        {/* Header Section */}
+        <div className="text-center mb-3">
+          <Avatar size={56} className="mb-2 bg-gradient-to-br from-brand-primary to-blue-400 text-white font-semibold shadow-lg">
+            {staffMember.name.split(' ').map(n => n[0]).join('')}
+          </Avatar>
+          <h3 className="font-semibold text-lg mb-1 font-quicksand text-gray-800">{staffMember.name}</h3>
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <span className="text-sm text-gray-600 font-medium">{staffMember.role}</span>
+            <Tag color={staffMember.status === 'active' ? 'green' : 'red'} className="text-xs">
+              {staffMember.status.toUpperCase()}
             </Tag>
-          ))}
+          </div>
+          <div className="text-xs text-gray-500 bg-gray-50 rounded px-2 py-1 inline-block">
+            {staffMember.experience}
+          </div>
+        </div>
+
+        {/* Contact Info */}
+        <div className="bg-gray-50 rounded-lg p-2 mb-3 space-y-1">
+          <div className="flex items-center text-xs text-gray-600">
+            <MailOutlined className="mr-1 text-brand-primary text-xs" />
+            <span className="truncate">{staffMember.email}</span>
+          </div>
+          <div className="flex items-center text-xs text-gray-600">
+            <PhoneOutlined className="mr-1 text-brand-primary text-xs" />
+            <span>{staffMember.phone}</span>
+          </div>
+        </div>
+
+        {/* Specialties */}
+        <div className="flex-1">
+          <div className="text-xs font-medium text-gray-700 mb-1">Specialties</div>
+          <div className="flex flex-wrap gap-1">
+            {staffMember.specialties.map(specialty => (
+              <Tag key={specialty} color="blue" className="text-xs mb-1 px-1 py-0">
+                {specialty}
+              </Tag>
+            ))}
+          </div>
         </div>
       </div>
     </Card>
@@ -158,53 +168,66 @@ export default function StaffPage() {
   const renderListCard = (staffMember: Staff) => (
     <Card
       key={staffMember.id}
-      className="mb-4 hover:shadow-md transition-shadow"
+      className="mb-3 hover:shadow-lg transition-all duration-200 border-0 shadow-sm"
       extra={
         <Dropdown menu={getActionMenu(staffMember)} trigger={['click']}>
-          <Button type="text" icon={<MoreOutlined />} />
+          <Button type="text" icon={<MoreOutlined />} className="text-gray-400 hover:text-gray-600" />
         </Dropdown>
       }
     >
-      <div className="flex items-center gap-4">
-        <Avatar size={56} className="bg-brand-primary bg-opacity-20 text-brand-primary">
+      <div className="flex items-start gap-3">
+        {/* Avatar */}
+        <Avatar size={48} className="bg-gradient-to-br from-brand-primary to-blue-400 text-white font-semibold shadow-lg flex-shrink-0">
           {staffMember.name.split(' ').map(n => n[0]).join('')}
         </Avatar>
 
-        <div className="flex-1">
-          <div className="flex items-start justify-between">
-            <div>
-              <h3 className="font-semibold text-lg mb-1 font-quicksand">{staffMember.name}</h3>
-              <p className="text-gray-500 mb-2">{staffMember.role}</p>
-            </div>
-            <Tag color={staffMember.status === 'active' ? 'green' : 'red'}>
-              {staffMember.status.toUpperCase()}
-            </Tag>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4 mb-3">
-            <div>
-              <div className="text-sm text-gray-600 mb-1">
-                <MailOutlined className="mr-2" />
-                {staffMember.email}
-              </div>
-              <div className="text-sm text-gray-600">
-                <PhoneOutlined className="mr-2" />
-                {staffMember.phone}
-              </div>
-            </div>
-            <div>
-              <div className="text-sm text-gray-600 mb-1">
-                Experience: {staffMember.experience}
+        {/* Main Content */}
+        <div className="flex-1 min-w-0">
+          {/* Header Row */}
+          <div className="flex items-start justify-between mb-2">
+            <div className="min-w-0 flex-1">
+              <h3 className="font-semibold text-lg mb-1 font-quicksand text-gray-800 truncate">{staffMember.name}</h3>
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-sm text-gray-600 font-medium">{staffMember.role}</span>
+                <Tag color={staffMember.status === 'active' ? 'green' : 'red'} className="text-xs">
+                  {staffMember.status.toUpperCase()}
+                </Tag>
+                <span className="text-xs text-gray-500 bg-gray-100 rounded px-2 py-0.5">
+                  {staffMember.experience}
+                </span>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-1">
-            {staffMember.specialties.map(specialty => (
-              <Tag key={specialty} color="blue">
-                {specialty}
-              </Tag>
-            ))}
+          {/* Contact Info Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-2">
+            <div className="bg-gray-50 rounded-lg p-2">
+              <div className="flex items-center text-xs text-gray-600 mb-1">
+                <MailOutlined className="mr-1 text-brand-primary text-xs" />
+                <span className="truncate">{staffMember.email}</span>
+              </div>
+              <div className="flex items-center text-xs text-gray-600">
+                <PhoneOutlined className="mr-1 text-brand-primary text-xs" />
+                <span>{staffMember.phone}</span>
+              </div>
+            </div>
+            
+            {/* Specialties */}
+            <div className="bg-gray-50 rounded-lg p-2">
+              <div className="text-xs font-medium text-gray-700 mb-1">Specialties</div>
+              <div className="flex flex-wrap gap-1">
+                {staffMember.specialties.slice(0, 3).map(specialty => (
+                  <Tag key={specialty} color="blue" className="text-xs px-1 py-0">
+                    {specialty}
+                  </Tag>
+                ))}
+                {staffMember.specialties.length > 3 && (
+                  <Tag className="text-xs px-1 py-0">
+                    +{staffMember.specialties.length - 3} more
+                  </Tag>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -248,7 +271,6 @@ export default function StaffPage() {
                 />
               </Space.Compact>
               <Button
-                type="primary"
                 icon={<PlusOutlined />}
                 className='flex-1'
                 onClick={handleAdd}
