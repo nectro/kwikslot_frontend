@@ -1,6 +1,6 @@
 'use client';
 
-import { Typography, Card, Row, Col, TimePicker, Select, DatePicker } from 'antd';
+import { Typography, Card, Row, Col, TimePicker, Select, DatePicker, Button } from 'antd';
 import TimelineView from '@/components/dashboard/TimelineView';
 import FilterPanel from '@/components/dashboard/FilterPanel';
 import UpcomingAppointments from '@/components/dashboard/UpcomingAppointments';
@@ -10,9 +10,9 @@ const { Title } = Typography;
 export default function Dashboard() {
   return (
     <div className="h-full">
-      <Row gutter={[8, 8]} className="h-full !m-0">
-        <Col span={18} className='h-full overflow-y-auto !scrollbar-hide'>  
-          <div className="flex flex-col h-full gap-4">
+      <Row gutter={[8, 8]} className="h-full !m-0 overflow-y-auto">
+        <Col span={18}>  
+          <div className="flex flex-col gap-3">
             <Card className="flex-1">
               <TimelineView />
             </Card>
@@ -22,9 +22,19 @@ export default function Dashboard() {
           </div>
         </Col>
         <Col span={6}>
-          <Card className="h-fit">
-            <FilterPanel />
-          </Card>
+          <div className="sticky top-0 flex flex-col gap-3">
+            <div className='flex flex-row gap-2'>
+                <Button className='w-[50%]' variant='outlined'>
+                    Walk-in
+                </Button>
+                <Button className='w-[50%]' variant='outlined'>
+                    Book
+                </Button>
+            </div>
+            <Card className="h-fit">
+              <FilterPanel />
+            </Card>
+          </div>
         </Col>
       </Row>
     </div>

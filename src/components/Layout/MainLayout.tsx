@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react';
-import { Layout, Menu, Button, Avatar, Dropdown } from 'antd';
+import { Layout, Menu, Button, Avatar, Dropdown, Badge, Typography } from 'antd';
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -12,18 +12,38 @@ import {
   SettingOutlined,
   UserOutlined,
   LogoutOutlined,
+  BellOutlined,
 } from '@ant-design/icons';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Logo from '@/assets/logo.svg';
 
-const { Sider, Content } = Layout;
+const { Sider, Content, Header } = Layout;
+const { Title } = Typography;
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
   const [collapsed, setCollapsed] = useState(false);
   const pathname = usePathname();
-  
+
+  // Get page title based on pathname
+  const getPageTitle = (path: string) => {
+    switch (path) {
+      case '/dashboard':
+        return 'Dashboard';
+      case '/staff':
+        return 'Staff Management';
+      case '/services':
+        return 'Services';
+      case '/history':
+        return 'History';
+      case '/settings':
+        return 'Settings';
+      default:
+        return 'Dashboard';
+    }
+  };
+
   const menuItems = [
     {
       key: '/dashboard',
@@ -69,9 +89,9 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <Layout>
-      <Sider 
-        trigger={null} 
-        collapsible 
+      <Sider
+        trigger={null}
+        collapsible
         collapsed={collapsed}
         theme="light"
         width={220}
@@ -88,18 +108,18 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
               />
             </div>
             {!collapsed && (
-                <>
+              <>
                 <span className="ml-3 text-2xl font-semibold font-quicksand text-brand-secondary">
-                    Kwik
+                  Kwik
                 </span>
                 <span className="text-2xl font-semibold font-quicksand text-brand-primary ml-0.5">
-                    Slot
+                  Slot
                 </span>
-                </>
+              </>
             )}
           </div>
         </div>
-        
+
         <div className="flex flex-col justify-between h-[calc(100vh-80px)]">
           <Menu
             mode="inline"
@@ -107,7 +127,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
             items={menuItems}
             className="border-none font-quicksand"
           />
-          
+
           <div className="border-t border-gray-200">
             <Menu
               mode="inline"
@@ -115,7 +135,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
               items={[settingsItem]}
               className="border-none font-poppins"
             />
-            
+
             <div className="p-4 border-t border-gray-200">
               <Dropdown
                 menu={{ items: userMenuItems }}
@@ -123,7 +143,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                 placement="topRight"
               >
                 <div className="flex items-center cursor-pointer hover:bg-gray-50 p-2 rounded-lg">
-                  <Avatar icon={<UserOutlined />} size={30}/>
+                  <Avatar icon={<UserOutlined />} size={30} />
                   {!collapsed && (
                     <div className="ml-3">
                       <div className="text-sm font-medium text-black">John Doe</div>
@@ -136,16 +156,35 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
           </div>
         </div>
       </Sider>
-      
+
       <Layout>
-        <div className="p-4">
-          <Button
-            type="text"
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed(!collapsed)}
-            className="text-lg"
-          />
-        </div>
+        <Header className="!bg-transparent !px-4 !py-3 !h-[70px] flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <Button
+              type="text"
+              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+              onClick={() => setCollapsed(!collapsed)}
+              className="text-lg hover:bg-gray-100"
+            />
+            <Title level={3} className="!mb-0 text-gray-800 font-quicksand !font-bold">
+              {getPageTitle(pathname)}
+            </Title>
+          </div>
+
+          <div className="flex items-center gap-3 pr-4">
+            <Button
+              shape="circle"
+              size="large"
+              icon={
+              <Badge count={5} size="small">
+                <BellOutlined className='!text-base' />
+              </Badge>
+              }
+              className="!hover:bg-gray-100 flex items-center justify-center !shadow-none !border-none"
+            />
+          </div>
+        </Header>
+
         <Content className="mx-4 my-3 h-[calc(100vh-100px)] overflow-y-auto">
           {children}
         </Content>
