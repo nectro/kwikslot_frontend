@@ -1,6 +1,7 @@
 import type { ThemeConfig } from 'antd';
 
 export const theme: ThemeConfig = {
+  hashed: false,
   token: {
     // Brand Colors
     colorPrimary: '#00D4FF',      // Brand primary - Bright Blue
@@ -22,8 +23,8 @@ export const theme: ThemeConfig = {
     colorBgLayout: '#F5F5F5',     // Light background
     colorBgElevated: '#FFFFFF',   // White for elevated components
     
-    // Typography
-    fontFamily: 'var(--font-geist-sans)',
+    // Font Family
+    fontFamily: 'var(--font-poppins)',
     fontSize: 14,
     
     // Component Base Styling
@@ -72,6 +73,7 @@ export const theme: ThemeConfig = {
       itemSelectedBg: 'rgba(0, 212, 255, 0.08)', // Brand blue with opacity
       itemActiveBg: 'rgba(0, 212, 255, 0.04)',   // Brand blue with less opacity
       itemSelectedColor: '#00D4FF',
+      fontFamily: 'var(--font-poppins)',
     },
     Table: {
       borderRadius: 8,
