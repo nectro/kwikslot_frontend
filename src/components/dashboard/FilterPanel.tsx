@@ -19,7 +19,7 @@ const DEMO_SERVICES = [
 const FilterPanel: React.FC = () => {
   return (
     <div className="space-y-6">
-      <Title level={4} className="font-quicksand text-brand-secondary">Filters</Title>
+      <Title level={4} className="font-quicksand">Filters</Title>
       
       <div className="space-y-4">
         <div>
@@ -53,6 +53,12 @@ const FilterPanel: React.FC = () => {
         <div className="pt-4">
           <Button type="primary" block>
             Apply Filters
+          </Button>
+        </div>
+
+        <div>
+          <Button type="link" block className="!p-0">
+            Clear All Filters
           </Button>
         </div>
       </div>

@@ -158,7 +158,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
       </Sider>
 
       <Layout>
-        <Header className="!bg-transparent !px-4 !py-3 !h-[70px] flex items-center justify-between">
+        <Header className="!bg-transparent !px-4 !py-3 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Button
               type="text"
@@ -185,7 +185,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
           </div>
         </Header>
 
-        <Content className="mx-4 my-3 h-[calc(100vh-100px)] overflow-y-auto">
+        <Content className="mx-4 my-3 h-[calc(100vh-120px)] overflow-y-auto">
           {children}
         </Content>
       </Layout>

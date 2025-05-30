@@ -24,10 +24,10 @@ export default function Dashboard() {
         <Col span={6}>
           <div className="sticky top-0 flex flex-col gap-3">
             <div className='flex flex-row gap-2'>
-                <Button className='w-[50%]' variant='outlined'>
+                <Button className='flex-1' variant='outlined'>
                     Walk-in
                 </Button>
-                <Button className='w-[50%]' variant='outlined'>
+                <Button className='flex-1' variant='outlined'>
                     Book
                 </Button>
             </div>

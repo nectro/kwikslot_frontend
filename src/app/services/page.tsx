@@ -238,20 +238,22 @@ export default function ServicesPage() {
     <div className="h-full">
       <Row gutter={[8, 8]} className="h-full !m-0 overflow-y-auto">
         <Col span={18}>
-          <div className="flex-1 overflow-auto">
-            {viewType === 'grid' ? (
-              <Row gutter={[16, 16]} className='!m-0 !p-0'>
-                {services.map(service => (
-                  <Col key={service.id} xs={24} sm={12} lg={8}>
-                    {renderGridCard(service)}
-                  </Col>
-                ))}
-              </Row>
-            ) : (
-              <div>
-                {services.map(service => renderListCard(service))}
-              </div>
-            )}
+          <div className="flex flex-col gap-3">
+            <div className="flex-1 overflow-auto">
+              {viewType === 'grid' ? (
+                <Row gutter={[16, 16]} className='!m-0 !p-0'>
+                  {services.map(service => (
+                    <Col key={service.id} xs={24} sm={12} lg={8}>
+                      {renderGridCard(service)}
+                    </Col>
+                  ))}
+                </Row>
+              ) : (
+                <div>
+                  {services.map(service => renderListCard(service))}
+                </div>
+              )}
+            </div>
           </div>
         </Col>
 

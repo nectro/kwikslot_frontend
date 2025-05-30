@@ -238,20 +238,22 @@ export default function StaffPage() {
     <div className="h-full">
       <Row gutter={[8, 8]} className="h-full !m-0 overflow-y-auto">
         <Col span={18}>
-          <div className="flex-1 overflow-auto">
-            {viewType === 'grid' ? (
-              <Row gutter={[16, 16]} className='!m-0 !p-0'>
-                {staff.map(staffMember => (
-                  <Col key={staffMember.id} xs={24} sm={12} lg={8}>
-                    {renderGridCard(staffMember)}
-                  </Col>
-                ))}
-              </Row>
-            ) : (
-              <div>
-                {staff.map(staffMember => renderListCard(staffMember))}
-              </div>
-            )}
+          <div className="flex flex-col gap-3">
+            <div className="flex-1 overflow-auto">
+              {viewType === 'grid' ? (
+                <Row gutter={[16, 16]} className='!m-0 !p-0'>
+                  {staff.map(staffMember => (
+                    <Col key={staffMember.id} xs={24} sm={12} lg={8}>
+                      {renderGridCard(staffMember)}
+                    </Col>
+                  ))}
+                </Row>
+              ) : (
+                <div>
+                  {staff.map(staffMember => renderListCard(staffMember))}
+                </div>
+              )}
+            </div>
           </div>
         </Col>
 
