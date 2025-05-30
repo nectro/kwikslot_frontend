@@ -26,9 +26,9 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
   
   const menuItems = [
     {
-      key: '/',
+      key: '/dashboard',
       icon: <DashboardOutlined />,
-      label: <Link href="/">Dashboard</Link>,
+      label: <Link href="/dashboard">Dashboard</Link>,
     },
     {
       key: '/staff',
@@ -146,7 +146,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
             className="text-lg"
           />
         </div>
-        <Content className="m-4 p-4 bg-white rounded-lg">
+        <Content className="mx-4 my-3 h-[calc(100vh-100px)] overflow-y-auto">
           {children}
         </Content>
       </Layout>

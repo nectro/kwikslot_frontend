@@ -66,13 +66,15 @@ export const theme: ThemeConfig = {
     },
     Card: {
       borderRadius: 8,
-      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
+      boxShadow: '0px 2px 2px 0px rgba(0, 0, 0, 0.03)',
+      bodyPadding: 20,
     },
     Menu: {
       itemBorderRadius: 6,
       itemSelectedBg: 'rgba(0, 212, 255, 0.08)', // Brand blue with opacity
       itemActiveBg: 'rgba(0, 212, 255, 0.04)',   // Brand blue with less opacity
       itemSelectedColor: '#00D4FF',
+      itemColor: 'rgba(72, 72, 72, 0.79)',
       fontFamily: 'var(--font-poppins)',
     },
     Table: {
@@ -122,6 +124,9 @@ export const theme: ThemeConfig = {
     Progress: {
       defaultColor: '#00D4FF',
       remainingColor: '#F5F5F5',
-    }
+    },
+    Typography: {
+      titleMarginBottom: 16,
+    },
   },
 };
