@@ -46,61 +46,61 @@ export default function HistoryPage() {
               <Col xs={24} sm={12} lg={6}>
                 <Card className="h-full">
                   <Statistic
-                    title={<span className="text-gray-600 font-medium">Total Revenue</span>}
+                    title={<span className="text-gray-600 font-medium text-xs">Total Revenue</span>}
                     value={stats.totalRevenue}
                     precision={0}
-                    prefix={<DollarOutlined className="text-brand-primary" />}
+                    prefix={<DollarOutlined className="text-brand-primary text-sm" />}
                     suffix={
                       <div className="text-xs text-green-600 mt-1">
                         +{calculateGrowth(stats.totalRevenue, stats.previousRevenue)}%
                       </div>
                     }
-                    valueStyle={{ color: '#484848', fontSize: '24px', fontWeight: 'bold' }}
+                    valueStyle={{ color: '#484848', fontSize: '18px', fontWeight: 'bold' }}
                   />
                 </Card>
               </Col>
               <Col xs={24} sm={12} lg={6}>
                 <Card className="h-full">
                   <Statistic
-                    title={<span className="text-gray-600 font-medium">Total Bookings</span>}
+                    title={<span className="text-gray-600 font-medium text-xs">Total Bookings</span>}
                     value={stats.totalBookings}
-                    prefix={<CalendarOutlined className="text-brand-primary" />}
+                    prefix={<CalendarOutlined className="text-brand-primary text-sm" />}
                     suffix={
                       <div className="text-xs text-green-600 mt-1">
                         +{calculateGrowth(stats.totalBookings, stats.previousBookings)}%
                       </div>
                     }
-                    valueStyle={{ color: '#484848', fontSize: '24px', fontWeight: 'bold' }}
+                    valueStyle={{ color: '#484848', fontSize: '18px', fontWeight: 'bold' }}
                   />
                 </Card>
               </Col>
               <Col xs={24} sm={12} lg={6}>
                 <Card className="h-full">
                   <Statistic
-                    title={<span className="text-gray-600 font-medium">Unique Customers</span>}
+                    title={<span className="text-gray-600 font-medium text-xs">Unique Customers</span>}
                     value={stats.totalCustomers}
-                    prefix={<UserOutlined className="text-brand-primary" />}
+                    prefix={<UserOutlined className="text-brand-primary text-sm" />}
                     suffix={
                       <div className="text-xs text-green-600 mt-1">
                         +{calculateGrowth(stats.totalCustomers, stats.previousCustomers)}%
                       </div>
                     }
-                    valueStyle={{ color: '#484848', fontSize: '24px', fontWeight: 'bold' }}
+                    valueStyle={{ color: '#484848', fontSize: '18px', fontWeight: 'bold' }}
                   />
                 </Card>
               </Col>
               <Col xs={24} sm={12} lg={6}>
                 <Card className="h-full">
                   <Statistic
-                    title={<span className="text-gray-600 font-medium">Avg. Booking Value</span>}
+                    title={<span className="text-gray-600 font-medium text-xs">Avg. Booking Value</span>}
                     value={stats.avgBookingValue}
-                    prefix={<TrophyOutlined className="text-brand-primary" />}
+                    prefix={<TrophyOutlined className="text-brand-primary text-sm" />}
                     suffix={
                       <div className="text-xs text-green-600 mt-1">
                         +{calculateGrowth(stats.avgBookingValue, stats.previousAvgBookingValue)}%
                       </div>
                     }
-                    valueStyle={{ color: '#484848', fontSize: '24px', fontWeight: 'bold' }}
+                    valueStyle={{ color: '#484848', fontSize: '18px', fontWeight: 'bold' }}
                   />
                 </Card>
               </Col>
@@ -111,7 +111,7 @@ export default function HistoryPage() {
               <Col xs={24} lg={14}>
                 <Card className="h-full">
                   <div className="flex items-center justify-between mb-4">
-                    <Title level={4} className="font-quicksand !mb-0">Revenue Trend</Title>
+                    <Title level={5} className="font-quicksand !mb-0">Revenue Trend</Title>
                   </div>
                   <RevenueChart dateRange={dateRange} />
                 </Card>
@@ -119,7 +119,7 @@ export default function HistoryPage() {
               <Col xs={24} lg={10}>
                 <Card className="h-full">
                   <div className="flex items-center justify-between mb-4">
-                    <Title level={4} className="font-quicksand !mb-0">Service Popularity</Title>
+                    <Title level={5} className="font-quicksand !mb-0">Service Popularity</Title>
                   </div>
                   <ServicePopularityChart />
                 </Card>
@@ -129,12 +129,12 @@ export default function HistoryPage() {
             {/* Booking History */}
             <Card className="flex-1">
               <div className="flex items-center justify-between mb-4">
-                <Title level={4} className="font-quicksand !mb-0">Booking History</Title>
+                <Title level={5} className="font-quicksand !mb-0">Booking History</Title>
                 <Space>
-                  <Button icon={<DownloadOutlined />} size="small">
+                  <Button icon={<DownloadOutlined />} size="small" className="text-xs">
                     Export
                   </Button>
-                  <Button icon={<PrinterOutlined />} size="small">
+                  <Button icon={<PrinterOutlined />} size="small" className="text-xs">
                     Print
                   </Button>
                 </Space>
@@ -147,10 +147,10 @@ export default function HistoryPage() {
         <Col span={6}>
           <div className="sticky top-0 flex flex-col gap-3">
             <div className='flex flex-row gap-2'>
-              <Button className='flex-1' type="primary">
+              <Button className='flex-1 text-xs' type="primary">
                 Generate Report
               </Button>
-              <Button className='flex-1' variant='outlined'>
+              <Button className='flex-1 text-xs' variant='outlined'>
                 Analytics
               </Button>
             </div>

@@ -49,9 +49,9 @@ const ServicePopularityChart: React.FC = () => {
         labels: {
           usePointStyle: true,
           pointStyle: 'circle',
-          padding: 15,
+          padding: 12,
           font: {
-            size: 11,
+            size: 9,
             family: 'Poppins',
           },
           generateLabels: function(chart: any) {
@@ -83,6 +83,12 @@ const ServicePopularityChart: React.FC = () => {
         borderWidth: 1,
         cornerRadius: 8,
         displayColors: true,
+        titleFont: {
+          size: 11,
+        },
+        bodyFont: {
+          size: 10,
+        },
         callbacks: {
           label: function(context: any) {
             return `${context.label}: ${context.parsed}% of bookings`;

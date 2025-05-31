@@ -149,7 +149,7 @@ const BookingHistory: React.FC = () => {
       key: 'id',
       width: 100,
       render: (id: string) => (
-        <Text strong className="text-brand-primary">{id}</Text>
+        <Text strong className="text-brand-primary text-xs">{id}</Text>
       ),
     },
     {
@@ -158,12 +158,12 @@ const BookingHistory: React.FC = () => {
       width: 120,
       render: (record: Booking) => (
         <div>
-          <div className="flex items-center text-sm">
-            <CalendarOutlined className="mr-1 text-gray-400" />
+          <div className="flex items-center text-xs">
+            <CalendarOutlined className="mr-1 text-gray-400 text-xs" />
             {record.bookingDate}
           </div>
           <div className="flex items-center text-xs text-gray-500">
-            <ClockCircleOutlined className="mr-1" />
+            <ClockCircleOutlined className="mr-1 text-xs" />
             {record.bookingTime}
           </div>
         </div>
@@ -175,9 +175,9 @@ const BookingHistory: React.FC = () => {
       width: 180,
       render: (record: Booking) => (
         <div className="flex items-center gap-2">
-          <Avatar size={32} icon={<UserOutlined />} className="bg-brand-primary bg-opacity-10 text-brand-primary" />
+          <Avatar size={24} icon={<UserOutlined />} className="bg-brand-primary bg-opacity-10 text-brand-primary" />
           <div>
-            <div className="text-sm font-medium">{record.customerName}</div>
+            <div className="text-xs font-medium">{record.customerName}</div>
             <div className="text-xs text-gray-500">{record.customerPhone}</div>
           </div>
         </div>
@@ -190,7 +190,7 @@ const BookingHistory: React.FC = () => {
       width: 150,
       render: (service: string, record: Booking) => (
         <div>
-          <div className="text-sm font-medium">{service}</div>
+          <div className="text-xs font-medium">{service}</div>
           <div className="text-xs text-gray-500">by {record.staff}</div>
           <div className="text-xs text-gray-400">{record.duration} min</div>
         </div>
@@ -202,7 +202,7 @@ const BookingHistory: React.FC = () => {
       key: 'amount',
       width: 100,
       render: (amount: number) => (
-        <Text strong className="text-lg">${amount}</Text>
+        <Text strong className="text-sm">${amount}</Text>
       ),
     },
     {

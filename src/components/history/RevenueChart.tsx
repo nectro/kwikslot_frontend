@@ -61,9 +61,9 @@ const RevenueChart: React.FC<RevenueChartProps> = ({ dateRange }) => {
         labels: {
           usePointStyle: true,
           pointStyle: 'circle',
-          padding: 20,
+          padding: 15,
           font: {
-            size: 12,
+            size: 10,
             family: 'Poppins',
           },
         },
@@ -76,6 +76,12 @@ const RevenueChart: React.FC<RevenueChartProps> = ({ dateRange }) => {
         borderWidth: 1,
         cornerRadius: 8,
         displayColors: true,
+        titleFont: {
+          size: 11,
+        },
+        bodyFont: {
+          size: 10,
+        },
         callbacks: {
           label: function(context: any) {
             return `${context.dataset.label}: $${context.parsed.y.toLocaleString()}`;
@@ -91,7 +97,7 @@ const RevenueChart: React.FC<RevenueChartProps> = ({ dateRange }) => {
         ticks: {
           color: '#8e8e8e',
           font: {
-            size: 11,
+            size: 9,
             family: 'Poppins',
           },
         },
@@ -104,7 +110,7 @@ const RevenueChart: React.FC<RevenueChartProps> = ({ dateRange }) => {
         ticks: {
           color: '#8e8e8e',
           font: {
-            size: 11,
+            size: 9,
             family: 'Poppins',
           },
           callback: function(value: any) {
@@ -115,8 +121,8 @@ const RevenueChart: React.FC<RevenueChartProps> = ({ dateRange }) => {
     },
     elements: {
       point: {
-        radius: 4,
-        hoverRadius: 6,
+        radius: 3,
+        hoverRadius: 5,
       },
       line: {
         tension: 0.4,
