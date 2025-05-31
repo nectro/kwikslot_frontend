@@ -47,7 +47,7 @@ export const theme: ThemeConfig = {
       defaultBorderColor: '#E5E5E5',
       defaultColor: '#484848',
       // Text button
-      textHoverBg: 'rgba(0, 212, 255, 0.08)', // Brand blue with opacity
+      textHoverBg: 'rgba(78, 78, 235, 0.08)', // Brand blue with opacity
     },
     Input: {
       borderRadius: 6,
@@ -55,14 +55,14 @@ export const theme: ThemeConfig = {
       paddingContentHorizontal: 12,
       activeBorderColor: '#4E4FEB',
       hoverBorderColor: '#33DDFF', // Lighter brand blue
-      activeShadow: '0 0 0 2px rgba(0, 212, 255, 0.2)', // Brand blue with opacity
+      activeShadow: '0 0 0 2px rgba(78, 78, 235, 0.2)', // Brand blue with opacity
     },
     Select: {
       borderRadius: 6,
       controlHeight: 40,
       paddingContentHorizontal: 12,
-      optionSelectedBg: 'rgba(0, 212, 255, 0.08)', // Brand blue with opacity
-      optionActiveBg: 'rgba(0, 212, 255, 0.04)',   // Brand blue with less opacity
+      optionSelectedBg: 'rgba(78, 78, 235, 0.08)', // Brand blue with opacity
+      optionActiveBg: 'rgba(78, 78, 235, 0.04)',   // Brand blue with less opacity
     },
     Card: {
       borderRadius: 8,
@@ -71,8 +71,8 @@ export const theme: ThemeConfig = {
     },
     Menu: {
       itemBorderRadius: 6,
-      itemSelectedBg: 'rgba(0, 212, 255, 0.08)', // Brand blue with opacity
-      itemActiveBg: 'rgba(0, 212, 255, 0.04)',   // Brand blue with less opacity
+      itemSelectedBg: 'rgba(78, 78, 235, 0.08)', // Brand blue with opacity
+      itemActiveBg: 'rgba(78, 78, 235, 0.04)',   // Brand blue with less opacity
       itemSelectedColor: '#4E4FEB',
       itemColor: 'rgba(72, 72, 72, 0.79)',
       fontFamily: 'var(--font-poppins)',
@@ -81,7 +81,7 @@ export const theme: ThemeConfig = {
       borderRadius: 8,
       headerBg: '#F5F5F5',
       headerColor: '#484848',     // Brand gray
-      rowHoverBg: 'rgba(0, 212, 255, 0.04)', // Brand blue with opacity
+      rowHoverBg: 'rgba(78, 78, 235, 0.04)', // Brand blue with opacity
       headerSplitColor: '#E5E5E5',
       borderColor: '#E5E5E5',
     },

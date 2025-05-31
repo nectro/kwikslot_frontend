@@ -131,7 +131,13 @@ export default function ServicesPage() {
   const renderGridCard = (service: Service) => (
     <Card
       key={service.id}
-      className="h-full hover:shadow-lg transition-all duration-200 border-0 shadow-sm"
+      className="h-full hover:shadow-sm transition-all duration-200 border-0 transition-shadow"
+      title={<div className='flex items-center gap-2'>
+        <Tag color={service.status === 'active' ? 'green' : 'red'} className="text-xs">
+          {service.status.toUpperCase()}
+        </Tag>
+      </div>
+    }
       extra={
         <Dropdown menu={getActionMenu(service)} trigger={['click']}>
           <Button type="text" icon={<MoreOutlined />} className="text-gray-400 hover:text-gray-600" />
@@ -149,9 +155,6 @@ export default function ServicesPage() {
           <h3 className="font-semibold text-lg mb-1 font-quicksand text-gray-800">{service.name}</h3>
           <div className="flex items-center justify-center gap-2 mb-2">
             <p className="text-sm text-gray-600 font-medium">{service.category}</p>
-            <Tag color={service.status === 'active' ? 'green' : 'red'} className="text-xs">
-              {service.status.toUpperCase()}
-            </Tag>
           </div>
           <Tag color={getPopularityColor(service.popularity)} className="text-xs mb-2">
             {service.popularity.toUpperCase()} DEMAND
@@ -184,7 +187,13 @@ export default function ServicesPage() {
   const renderListCard = (service: Service) => (
     <Card
       key={service.id}
-      className="mb-3 hover:shadow-lg transition-all duration-200 border-0 shadow-sm"
+      className="mb-3 hover:shadow-sm transition-all duration-200 border-0 transition-shadow"
+      title={<div className='flex items-center gap-2'>
+        <Tag color={service.status === 'active' ? 'green' : 'red'} className="text-xs">
+          {service.status.toUpperCase()}
+        </Tag>
+      </div>
+    }
       extra={
         <Dropdown menu={getActionMenu(service)} trigger={['click']}>
           <Button type="text" icon={<MoreOutlined />} className="text-gray-400 hover:text-gray-600" />
@@ -249,7 +258,7 @@ export default function ServicesPage() {
                   ))}
                 </Row>
               ) : (
-                <div>
+                <div className='flex flex-col gap-3'>
                   {services.map(service => renderListCard(service))}
                 </div>
               )}

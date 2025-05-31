@@ -83,7 +83,7 @@ const UpcomingAppointments: React.FC = () => {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <Title level={4} className="font-quicksand !mb-0">Upcoming Appointments</Title>
+        <Title level={5} className="font-quicksand !mb-0">Upcoming Appointments</Title>
         <Text type="secondary">{DEMO_APPOINTMENTS.length} appointments</Text>
       </div>
 

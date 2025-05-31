@@ -88,7 +88,7 @@ const TimelineView: React.FC = () => {
 
   return (
     <div className="w-full">
-      <Title level={4} className="font-quicksand">Today's Schedule</Title>
+      <Title level={5} className="font-quicksand">Today's Schedule</Title>
       
       <div className="relative">
         {/* Fixed Service Names Column */}

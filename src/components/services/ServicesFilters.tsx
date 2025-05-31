@@ -7,24 +7,26 @@ const { Title, Text } = Typography;
 const ServicesFilters: React.FC = () => {
   return (
     <div className="space-y-6">
-      <Title level={4} className="font-quicksand">Filters</Title>
+      <Title level={5} className="font-quicksand">Filters</Title>
       
       <div className="space-y-4">
         <div>
-          <label className="block text-sm font-medium mb-2">Search</label>
+          <label className="block text-xs font-medium mb-2">Search</label>
           <Input
             placeholder="Search services..."
             prefix={<SearchOutlined />}
             className="w-full"
+            size="small"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-2">Category</label>
+          <label className="block text-xs font-medium mb-2">Category</label>
           <Select
             mode="multiple"
             placeholder="Select categories"
             className="w-full"
+            size="small"
             options={[
               { value: 'hair-cutting', label: 'Hair Cutting' },
               { value: 'coloring', label: 'Coloring' },
@@ -61,7 +63,7 @@ const ServicesFilters: React.FC = () => {
         </div> */}
 
         <div>
-          <label className="block text-sm font-medium mb-2">Price Range ($)</label>
+          <label className="block text-xs font-medium mb-2">Price Range ($)</label>
           <Slider
             range
             min={0}
@@ -79,7 +81,7 @@ const ServicesFilters: React.FC = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-2">Duration (minutes)</label>
+          <label className="block text-xs font-medium mb-2">Duration (minutes)</label>
           <Slider
             range
             min={15}
@@ -95,14 +97,14 @@ const ServicesFilters: React.FC = () => {
           />
         </div>
 
-        <div className="pt-4">
-          <Button type="primary" block>
+        <div className="pt-2">
+          <Button type="primary" block size="small" className="text-xs">
             Apply Filters
           </Button>
         </div>
 
         <div>
-          <Button type="link" block className="!p-0">
+          <Button type="link" block size="small" className="!p-0 text-xs">
             Clear All Filters
           </Button>
         </div>

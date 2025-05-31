@@ -113,7 +113,13 @@ export default function StaffPage() {
   const renderGridCard = (staffMember: Staff) => (
     <Card
       key={staffMember.id}
-      className="h-full hover:shadow-lg transition-all duration-200 border-0 shadow-sm"
+      className="h-full hover:shadow-sm transition-all duration-200 border-0 transition-shadow"
+      title={<div className='flex items-center gap-2'>
+        <Tag color={staffMember.status === 'active' ? 'green' : 'red'} className="text-xs">
+          {staffMember.status.toUpperCase()}
+        </Tag>
+      </div>
+    }
       extra={
         <Dropdown menu={getActionMenu(staffMember)} trigger={['click']}>
           <Button type="text" icon={<MoreOutlined />} className="text-gray-400 hover:text-gray-600" />
@@ -129,9 +135,6 @@ export default function StaffPage() {
           <h3 className="font-semibold text-lg mb-1 font-quicksand text-gray-800">{staffMember.name}</h3>
           <div className="flex items-center justify-center gap-2 mb-2">
             <span className="text-sm text-gray-600 font-medium">{staffMember.role}</span>
-            <Tag color={staffMember.status === 'active' ? 'green' : 'red'} className="text-xs">
-              {staffMember.status.toUpperCase()}
-            </Tag>
           </div>
           <div className="text-xs text-gray-500 bg-gray-50 rounded px-2 py-1 inline-block">
             {staffMember.experience}
@@ -168,7 +171,7 @@ export default function StaffPage() {
   const renderListCard = (staffMember: Staff) => (
     <Card
       key={staffMember.id}
-      className="mb-3 hover:shadow-lg transition-all duration-200 border-0 shadow-sm"
+      className="mb-3 hover:shadow-sm transition-all duration-200 border-0 transition-shadow"
       extra={
         <Dropdown menu={getActionMenu(staffMember)} trigger={['click']}>
           <Button type="text" icon={<MoreOutlined />} className="text-gray-400 hover:text-gray-600" />
@@ -249,7 +252,7 @@ export default function StaffPage() {
                   ))}
                 </Row>
               ) : (
-                <div>
+                <div className='flex flex-col gap-3'>
                   {staff.map(staffMember => renderListCard(staffMember))}
                 </div>
               )}

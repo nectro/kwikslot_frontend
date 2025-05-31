@@ -129,14 +129,14 @@ const HistoryFilters: React.FC<HistoryFiltersProps> = ({
           />
         </div>
 
-        <div className="pt-4">
+        <div className="pt-2">
           <Button type="primary" block size="small" className="text-xs">
             Apply Filters
           </Button>
         </div>
 
         <div>
-          <Button type="link" block className="!p-0 text-xs">
+          <Button type="link" block size="small" className="!p-0 text-xs">
             Clear All Filters
           </Button>
         </div>

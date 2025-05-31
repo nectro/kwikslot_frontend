@@ -137,7 +137,7 @@ const RevenueChart: React.FC<RevenueChartProps> = ({ dateRange }) => {
         label: '2024 Revenue',
         data: currentYearData,
         borderColor: '#4E4FEB',
-        backgroundColor: 'rgba(0, 212, 255, 0.1)',
+        backgroundColor: 'rgba(78, 78, 235, 0.1)',
         borderWidth: 3,
         fill: true,
         pointBackgroundColor: '#4E4FEB',
