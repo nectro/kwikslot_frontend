@@ -128,16 +128,16 @@ export default function StaffPage() {
     >
       <div className="flex flex-col h-full">
         {/* Header Section */}
-        <div className="text-center mb-3">
-          <Avatar size={56} className="mb-2 bg-gradient-to-br from-brand-primary to-blue-400 text-white font-semibold shadow-lg">
+        <div className="text-center mb-3 flex flex-row items-center justify-start gap-4">
+          <Avatar size={56} className="mb-2 bg-gradient-to-br from-brand-primary to-blue-400 text-white font-semibold shadow-sm !rounded-sm">
             {staffMember.name.split(' ').map(n => n[0]).join('')}
           </Avatar>
-          <h3 className="font-semibold text-lg mb-1 font-quicksand text-gray-800">{staffMember.name}</h3>
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <span className="text-sm text-gray-600 font-medium">{staffMember.role}</span>
-          </div>
-          <div className="text-xs text-gray-500 bg-gray-50 rounded px-2 py-1 inline-block">
-            {staffMember.experience}
+          <div className='flex flex-col items-start'>
+            <h3 className="font-semibold text-base mb-1 font-quicksand text-gray-800">{staffMember.name}</h3>
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <span className="text-xs text-gray-600 font-medium">{staffMember.role}</span>
+              <Tag color="blue" className="text-xs">{staffMember.experience}</Tag>
+            </div>
           </div>
         </div>
 

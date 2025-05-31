@@ -7,18 +7,14 @@ import {
   UserOutlined,
   BellOutlined,
   SecurityScanOutlined,
-  DatabaseOutlined,
   SaveOutlined,
   ReloadOutlined
 } from '@ant-design/icons';
 import SettingsNavigation from '@/components/settings/SettingsNavigation';
 import GeneralSettings from '@/components/settings/GeneralSettings';
-import UserPreferences from '@/components/settings/UserPreferences';
+import UserProfile from '@/components/settings/UserProfile';
 import NotificationSettings from '@/components/settings/NotificationSettings';
-import SecuritySettings from '@/components/settings/SecuritySettings';
 import PricingSettings from '@/components/settings/PricingSettings';
-import SystemSettings from '@/components/settings/SystemSettings';
-import DataManagement from '@/components/settings/DataManagement';
 
 const { Title } = Typography;
 
@@ -29,18 +25,12 @@ export default function SettingsPage() {
     switch (activeSection) {
       case 'general':
         return <GeneralSettings />;
-      case 'preferences':
-        return <UserPreferences />;
+      case 'profile':
+        return <UserProfile />;
       case 'notifications':
         return <NotificationSettings />;
-      case 'security':
-        return <SecuritySettings />;
       case 'pricing':
         return <PricingSettings />;
-      case 'system':
-        return <SystemSettings />;
-      case 'data':
-        return <DataManagement />;
       default:
         return <GeneralSettings />;
     }
@@ -50,18 +40,12 @@ export default function SettingsPage() {
     switch (activeSection) {
       case 'general':
         return 'General Settings';
-      case 'preferences':
-        return 'User Preferences';
+      case 'profile':
+        return 'User Profile';
       case 'notifications':
         return 'Notification Settings';
-      case 'security':
-        return 'Security Settings';
       case 'pricing':
         return 'Pricing & Billing';
-      case 'system':
-        return 'System Settings';
-      case 'data':
-        return 'Data Management';
       default:
         return 'General Settings';
     }
@@ -77,10 +61,10 @@ export default function SettingsPage() {
               <div className="flex items-center justify-between mb-4">
                 <Title level={5} className="font-quicksand !mb-0">{getSectionTitle()}</Title>
                 <Space>
-                  <Button icon={<ReloadOutlined />} size="small" className="text-xs">
+                  <Button icon={<ReloadOutlined />} size="small" className="!text-xs">
                     Reset
                   </Button>
-                  <Button type="primary" icon={<SaveOutlined />} size="small" className="text-xs">
+                  <Button type="primary" icon={<SaveOutlined />} size="small" className="!text-xs">
                     Save Changes
                   </Button>
                 </Space>

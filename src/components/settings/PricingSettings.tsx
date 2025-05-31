@@ -36,12 +36,10 @@ const PricingSettings: React.FC = () => {
     status: 'active'
   };
 
-  // Current usage data
+  // Current usage data (removed storage)
   const currentUsage = {
     bookingsUsed: 87,
-    servicesUsed: 4,
-    storageUsed: 2.4,
-    storageLimit: 10
+    servicesUsed: 4
   };
 
   // Pending bills
@@ -64,14 +62,14 @@ const PricingSettings: React.FC = () => {
     }
   ];
 
-  // Pricing tiers
+  // Pricing tiers (removed storage from features)
   const pricingTiers = [
     {
       name: 'Starter',
       price: 499,
       bookings: 50,
       services: 3,
-      features: ['Basic Dashboard', 'Email Support', '5GB Storage'],
+      features: ['Basic Dashboard', 'Email Support', 'Standard Analytics'],
       popular: false
     },
     {
@@ -79,7 +77,7 @@ const PricingSettings: React.FC = () => {
       price: 999,
       bookings: 100,
       services: 5,
-      features: ['Advanced Dashboard', 'Priority Support', '10GB Storage', 'Analytics'],
+      features: ['Advanced Dashboard', 'Priority Support', 'Advanced Analytics', 'Custom Reports'],
       popular: true
     },
     {
@@ -87,7 +85,7 @@ const PricingSettings: React.FC = () => {
       price: 1999,
       bookings: 250,
       services: 15,
-      features: ['Custom Dashboard', '24/7 Support', '50GB Storage', 'Advanced Analytics', 'API Access'],
+      features: ['Custom Dashboard', '24/7 Support', 'Premium Analytics', 'API Access', 'White-label Options'],
       popular: false
     }
   ];
@@ -119,8 +117,7 @@ const PricingSettings: React.FC = () => {
   const getUsageColor = (percentage: number) => {
     if (percentage >= 90) return '#ff4d4f';
     if (percentage >= 75) return '#faad14';
-    if (percentage >= 50) return '#1890ff';
-    return '#52c41a';
+    return '#4E4FEB'; // Use brand color for normal usage
   };
 
   const getUsageStatus = (percentage: number) => {
@@ -131,7 +128,8 @@ const PricingSettings: React.FC = () => {
   };
 
   const bookingUsagePercent = Math.round((currentUsage.bookingsUsed / currentPlan.bookings) * 100);
-  const overallUsagePercent = Math.round(((currentUsage.bookingsUsed / currentPlan.bookings) + (currentUsage.servicesUsed / currentPlan.services) + (currentUsage.storageUsed / currentUsage.storageLimit)) / 3 * 100);
+  // Updated calculation without storage
+  const overallUsagePercent = Math.round(((currentUsage.bookingsUsed / currentPlan.bookings) + (currentUsage.servicesUsed / currentPlan.services)) / 2 * 100);
 
   const billColumns = [
     {
@@ -184,25 +182,81 @@ const PricingSettings: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      {/* Current Subscription & Usage Speedometer Row */}
+      {/* Stats Cards Row - Top Priority */}
       <Row gutter={[16, 16]}>
-        <Col xs={24} lg={16}>
-          <Card className="h-full">
+        <Col xs={24} sm={6}>
+          <Card className="border h-24">
+            <div className="flex items-center gap-3 h-full">
+              <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                <DollarOutlined className="text-gray-600 text-base" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <Text className="!text-xs text-gray-500 block leading-none">Monthly Savings</Text>
+                <Text className="!text-lg font-bold block leading-tight mt-1">₹200</Text>
+                <Text className="!text-xs text-gray-400 block leading-none mt-0.5">vs. competitors</Text>
+              </div>
+            </div>
+          </Card>
+        </Col>
+        <Col xs={24} sm={6}>
+          <Card className="border h-24">
+            <div className="flex items-center gap-3 h-full">
+              <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                <CalendarOutlined className="text-gray-600 text-base" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <Text className="!text-xs text-gray-500 block leading-none">Next Bill Date</Text>
+                <Text className="!text-lg font-bold block leading-tight mt-1">{dayjs(currentPlan.endDate).format('MMM DD')}</Text>
+                <Text className="!text-xs text-gray-400 block leading-none mt-0.5">{dayjs(currentPlan.endDate).fromNow()}</Text>
+              </div>
+            </div>
+          </Card>
+        </Col>
+        <Col xs={24} sm={6}>
+          <Card className="border h-24">
+            <div className="flex items-center gap-3 h-full">
+              <div className="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                <ExclamationCircleOutlined className="text-red-500 text-base" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <Text className="!text-xs text-gray-500 block leading-none">Pending Amount</Text>
+                <Text className="!text-lg font-bold text-red-600 block leading-tight mt-1">₹1,149</Text>
+                <Text className="!text-xs text-gray-400 block leading-none mt-0.5">2 invoices due</Text>
+              </div>
+            </div>
+          </Card>
+        </Col>
+        <Col xs={24} sm={6}>
+          <Card className="border h-24">
+            <div className="flex items-center gap-3 h-full">
+              <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                <ThunderboltOutlined className="text-brand-primary text-base" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <Text className="!text-xs text-gray-500 block leading-none">Overall Usage</Text>
+                <Text className="!text-lg font-bold block leading-tight mt-1" style={{ color: getUsageColor(overallUsagePercent) }}>
+                  {overallUsagePercent}%
+                </Text>
+                <Text className="!text-xs text-gray-400 block leading-none mt-0.5">{getUsageStatus(overallUsagePercent)}</Text>
+              </div>
+            </div>
+          </Card>
+        </Col>
+      </Row>
+
+      {/* Current Subscription - Full Row */}
+      <Row gutter={[16, 16]}>
+        <Col xs={24}>
+          <Card>
             <Title level={5} className="font-quicksand mb-6">Current Subscription & Usage</Title>
             
             <Row gutter={[24, 24]}>
               {/* Subscription Details */}
               <Col xs={24} md={12}>
-                <div className="relative">
-                  <div className="absolute -top-2 -right-2">
-                    <div className="bg-green-500 text-white text-xs px-2 py-1 rounded-full font-medium">
-                      Active
-                    </div>
-                  </div>
-                  
-                  <div className="bg-gradient-to-br from-blue-50 to-purple-50 p-6 rounded-lg border border-blue-200">
+                <div className="space-y-4">
+                  <div className="border border-gray-200 p-4 rounded-lg">
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center">
+                      <div className="w-12 h-12 bg-brand-primary rounded-lg flex items-center justify-center">
                         <TrophyOutlined className="text-white text-xl" />
                       </div>
                       <div>
@@ -213,7 +267,7 @@ const PricingSettings: React.FC = () => {
                     
                     <div className="flex justify-between items-end">
                       <div>
-                        <Text className="text-3xl font-bold text-blue-600">₹{currentPlan.price}</Text>
+                        <Text className="text-3xl font-bold text-brand-primary">₹{currentPlan.price}</Text>
                         <Text className="text-xs text-gray-500 block">/month</Text>
                       </div>
                       <div className="text-right">
@@ -223,24 +277,24 @@ const PricingSettings: React.FC = () => {
                     </div>
                   </div>
 
-                  <Row gutter={[16, 16]} className="mt-4">
+                  <Row gutter={[16, 16]}>
                     <Col xs={12}>
-                      <Card size="small" className="text-center border-l-4 border-l-blue-500">
+                      <Card size="small" className="text-center border">
                         <Statistic 
                           title={<span className="text-xs">Bookings</span>}
                           value={currentPlan.bookings}
                           suffix={<span className="text-xs">/month</span>}
-                          valueStyle={{ fontSize: '16px', color: '#1890ff' }}
+                          valueStyle={{ fontSize: '16px' }}
                         />
                       </Card>
                     </Col>
                     <Col xs={12}>
-                      <Card size="small" className="text-center border-l-4 border-l-green-500">
+                      <Card size="small" className="text-center border">
                         <Statistic 
                           title={<span className="text-xs">Services</span>}
                           value={currentPlan.services}
                           suffix={<span className="text-xs">max</span>}
-                          valueStyle={{ fontSize: '16px', color: '#52c41a' }}
+                          valueStyle={{ fontSize: '16px' }}
                         />
                       </Card>
                     </Col>
@@ -248,13 +302,10 @@ const PricingSettings: React.FC = () => {
                 </div>
               </Col>
 
-              {/* Usage Speedometer */}
+              {/* Usage Meter */}
               <Col xs={24} md={12}>
                 <div className="text-center">
-                  <Title level={5} className="font-quicksand mb-4">
-                    <ThunderboltOutlined className="mr-2 text-yellow-500" />
-                    Usage Meter
-                  </Title>
+                  <Title level={5} className="font-quicksand mb-4">Usage Meter</Title>
                   
                   {/* Main Speedometer */}
                   <div className="relative mb-6">
@@ -279,8 +330,8 @@ const PricingSettings: React.FC = () => {
                   </div>
 
                   {/* Individual Metrics */}
-                  <Row gutter={[8, 8]}>
-                    <Col xs={8}>
+                  <Row gutter={[16, 16]}>
+                    <Col xs={12}>
                       <div className="text-center">
                         <Progress
                           type="circle"
@@ -294,32 +345,18 @@ const PricingSettings: React.FC = () => {
                         <Text className="text-xs text-gray-500">{currentUsage.bookingsUsed}/{currentPlan.bookings}</Text>
                       </div>
                     </Col>
-                    <Col xs={8}>
+                    <Col xs={12}>
                       <div className="text-center">
                         <Progress
                           type="circle"
                           percent={(currentUsage.servicesUsed / currentPlan.services) * 100}
                           size={50}
-                          strokeColor="#52c41a"
+                          strokeColor="#666"
                           strokeWidth={6}
                           format={() => <span className="text-xs font-bold">{Math.round((currentUsage.servicesUsed / currentPlan.services) * 100)}%</span>}
                         />
                         <Text className="text-xs block mt-1">Services</Text>
                         <Text className="text-xs text-gray-500">{currentUsage.servicesUsed}/{currentPlan.services}</Text>
-                      </div>
-                    </Col>
-                    <Col xs={8}>
-                      <div className="text-center">
-                        <Progress
-                          type="circle"
-                          percent={(currentUsage.storageUsed / currentUsage.storageLimit) * 100}
-                          size={50}
-                          strokeColor="#722ed1"
-                          strokeWidth={6}
-                          format={() => <span className="text-xs font-bold">{Math.round((currentUsage.storageUsed / currentUsage.storageLimit) * 100)}%</span>}
-                        />
-                        <Text className="text-xs block mt-1">Storage</Text>
-                        <Text className="text-xs text-gray-500">{currentUsage.storageUsed}GB/{currentUsage.storageLimit}GB</Text>
                       </div>
                     </Col>
                   </Row>
@@ -351,50 +388,6 @@ const PricingSettings: React.FC = () => {
             </div>
           </Card>
         </Col>
-
-        {/* Quick Stats */}
-        <Col xs={24} lg={8}>
-          <div className="space-y-4 h-full">
-            <Card className="bg-gradient-to-r from-green-50 to-blue-50 border-green-200">
-              <div className="flex items-center justify-between">
-                <div>
-                  <Text className="text-xs text-gray-600">Monthly Savings</Text>
-                  <Text className="text-xl font-bold text-green-600 block">₹200</Text>
-                  <Text className="text-xs text-gray-500">vs. competitors</Text>
-                </div>
-                <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
-                  <DollarOutlined className="text-white text-xl" />
-                </div>
-              </div>
-            </Card>
-
-            <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
-              <div className="flex items-center justify-between">
-                <div>
-                  <Text className="text-xs text-gray-600">Next Bill Date</Text>
-                  <Text className="text-lg font-bold text-blue-600 block">{dayjs(currentPlan.endDate).format('MMM DD')}</Text>
-                  <Text className="text-xs text-gray-500">{dayjs(currentPlan.endDate).fromNow()}</Text>
-                </div>
-                <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center">
-                  <CalendarOutlined className="text-white text-xl" />
-                </div>
-              </div>
-            </Card>
-
-            <Card className="bg-gradient-to-r from-orange-50 to-red-50 border-orange-200">
-              <div className="flex items-center justify-between">
-                <div>
-                  <Text className="text-xs text-gray-600">Pending Amount</Text>
-                  <Text className="text-lg font-bold text-orange-600 block">₹1,149</Text>
-                  <Text className="text-xs text-gray-500">2 invoices due</Text>
-                </div>
-                <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center">
-                  <ExclamationCircleOutlined className="text-white text-xl" />
-                </div>
-              </div>
-            </Card>
-          </div>
-        </Col>
       </Row>
 
       {/* Pricing Calculator Row */}
@@ -402,7 +395,7 @@ const PricingSettings: React.FC = () => {
         <Col xs={24}>
           <Card>
             <Title level={5} className="font-quicksand mb-6">
-              <CalculatorOutlined className="mr-2 text-blue-500" />
+              <CalculatorOutlined className="mr-2" />
               Interactive Pricing Calculator
             </Title>
             
@@ -424,7 +417,7 @@ const PricingSettings: React.FC = () => {
 
                   <div>
                     <label className="block text-xs font-medium mb-3">
-                      Bookings per month: <span className="text-blue-600 font-bold">{calculatorBookings}</span>
+                      Bookings per month: <span className="text-brand-primary font-bold">{calculatorBookings}</span>
                     </label>
                     <Slider
                       min={50}
@@ -445,7 +438,7 @@ const PricingSettings: React.FC = () => {
 
                   <div>
                     <label className="block text-xs font-medium mb-3">
-                      Number of services: <span className="text-green-600 font-bold">{calculatorServices}</span>
+                      Number of services: <span className="text-gray-600 font-bold">{calculatorServices}</span>
                     </label>
                     <Slider
                       min={3}
@@ -460,18 +453,18 @@ const PricingSettings: React.FC = () => {
                         15: <span className="text-xs">15</span>,
                         20: <span className="text-xs">20</span>,
                       }}
-                      trackStyle={{ backgroundColor: '#52c41a' }}
-                      handleStyle={{ borderColor: '#52c41a' }}
+                      trackStyle={{ backgroundColor: '#666' }}
+                      handleStyle={{ borderColor: '#666' }}
                     />
                   </div>
                 </div>
               </Col>
 
               <Col xs={24} lg={8}>
-                <div className="bg-gradient-to-br from-blue-50 to-purple-50 p-6 rounded-lg border-2 border-blue-200 h-full flex flex-col justify-center">
+                <div className="border border-gray-200 p-6 rounded-lg h-full flex flex-col justify-center">
                   <div className="text-center">
                     <Text className="text-xs font-medium text-gray-600 block mb-2">Estimated Price</Text>
-                    <Text className="text-4xl font-bold text-blue-600 block">
+                    <Text className="text-4xl font-bold text-brand-primary block">
                       ₹{calculatePrice().toLocaleString()}
                     </Text>
                     <Text className="text-xs text-gray-500 mb-4">
@@ -479,7 +472,7 @@ const PricingSettings: React.FC = () => {
                     </Text>
                     
                     {billingCycle === 'annual' && (
-                      <div className="bg-green-100 text-green-700 text-xs p-2 rounded mb-4">
+                      <div className="bg-green-50 text-green-700 text-xs p-2 rounded mb-4 border border-green-200">
                         <Text className="text-xs font-medium">Save ₹{Math.round(calculatePrice() * 0.17)} annually!</Text>
                       </div>
                     )}
@@ -501,38 +494,44 @@ const PricingSettings: React.FC = () => {
           <Card>
             <div className="flex items-center justify-between mb-6">
               <Title level={5} className="font-quicksand !mb-0">
-                <CreditCardOutlined className="mr-2 text-orange-500" />
+                <CreditCardOutlined className="mr-2" />
                 Pending Bills & Invoices
               </Title>
-              <Button size="small" icon={<DownloadOutlined />} className="text-xs">
+              <Button size="small" icon={<DownloadOutlined />} className="!text-xs">
                 Download All
               </Button>
             </div>
             
-            <Alert
-              message={<span className="text-xs"><strong>Payment Required:</strong> You have 2 pending bills totaling ₹1,149. Please settle to avoid service interruption.</span>}
-              type="warning"
-              showIcon
-              icon={<ExclamationCircleOutlined />}
-              className="mb-6 text-xs"
-            />
+            <div className="space-y-6">
+              <Alert
+                message={<span className="text-xs"><strong>Payment Required:</strong> You have 2 pending bills totaling ₹1,149. Please settle to avoid service interruption.</span>}
+                type="warning"
+                showIcon
+                icon={<ExclamationCircleOutlined />}
+                className="!text-xs !mb-3"
+              />
 
-            <Table
-              columns={billColumns}
-              dataSource={pendingBills}
-              pagination={false}
-              size="small"
-              className="text-xs"
-            />
-
-            <div className="flex justify-between items-center mt-6 pt-4 border-t bg-gray-50 -mx-6 -mb-6 px-6 py-4">
-              <div>
-                <Text className="text-sm font-bold">Total Outstanding: ₹1,149</Text>
-                <Text className="text-xs text-gray-500 block">Next due: Feb 10, 2024</Text>
+              <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
+                <Table
+                  columns={billColumns}
+                  dataSource={pendingBills}
+                  pagination={false}
+                  size="small"
+                  className="!text-xs"
+                />
               </div>
-              <Button type="primary" size="small" className="text-xs px-6">
-                Pay All Bills (₹1,149)
-              </Button>
+
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                <div className="flex justify-between items-center">
+                  <div>
+                    <Text className="!text-sm font-bold block">Total Outstanding: ₹1,149</Text>
+                    <Text className="!text-xs text-gray-500">Next due: Feb 10, 2024</Text>
+                  </div>
+                  <Button type="primary" size="small" className="!text-xs px-6">
+                    Pay All Bills (₹1,149)
+                  </Button>
+                </div>
+              </div>
             </div>
           </Card>
         </Col>
@@ -548,12 +547,12 @@ const PricingSettings: React.FC = () => {
               {pricingTiers.map((tier, index) => (
                 <Col xs={24} md={8} key={tier.name}>
                   <Card 
-                    className={`h-full relative ${tier.name === currentPlan.name ? 'border-2 border-blue-500 shadow-lg' : 'border border-gray-200'} ${tier.popular ? 'transform scale-105' : ''}`}
+                    className={`h-full relative ${tier.name === currentPlan.name ? 'border-2 border-brand-primary shadow-md' : 'border border-gray-200'} ${tier.popular ? 'transform scale-105' : ''}`}
                     size="small"
                   >
                     {tier.popular && (
                       <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                        <div className="bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs px-4 py-1 rounded-full font-medium">
+                        <div className="bg-brand-primary text-white text-xs px-4 py-1 rounded-full font-medium">
                           Most Popular
                         </div>
                       </div>

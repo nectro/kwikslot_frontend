@@ -5,8 +5,6 @@ import {
   UserOutlined,
   BellOutlined,
   SecurityScanOutlined,
-  DatabaseOutlined,
-  DesktopOutlined,
   CreditCardOutlined
 } from '@ant-design/icons';
 
@@ -28,9 +26,9 @@ const SettingsNavigation: React.FC<SettingsNavigationProps> = ({
       label: <span className="text-xs">General Settings</span>,
     },
     {
-      key: 'preferences',
+      key: 'profile',
       icon: <UserOutlined className="text-sm" />,
-      label: <span className="text-xs">User Preferences</span>,
+      label: <span className="text-xs">User Profile</span>,
     },
     {
       key: 'notifications',
@@ -38,24 +36,9 @@ const SettingsNavigation: React.FC<SettingsNavigationProps> = ({
       label: <span className="text-xs">Notifications</span>,
     },
     {
-      key: 'security',
-      icon: <SecurityScanOutlined className="text-sm" />,
-      label: <span className="text-xs">Security</span>,
-    },
-    {
       key: 'pricing',
       icon: <CreditCardOutlined className="text-sm" />,
       label: <span className="text-xs">Pricing & Billing</span>,
-    },
-    {
-      key: 'system',
-      icon: <DesktopOutlined className="text-sm" />,
-      label: <span className="text-xs">System</span>,
-    },
-    {
-      key: 'data',
-      icon: <DatabaseOutlined className="text-sm" />,
-      label: <span className="text-xs">Data Management</span>,
     },
   ];
 

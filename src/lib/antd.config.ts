@@ -25,7 +25,6 @@ export const theme: ThemeConfig = {
     
     // Font Family
     fontFamily: 'var(--font-poppins)',
-    fontSize: 14,
     
     // Component Base Styling
     borderRadius: 6,
