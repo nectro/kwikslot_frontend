@@ -35,62 +35,64 @@ const NotificationSettings: React.FC = () => {
       >
         <Row gutter={[16, 16]}>
           <Col xs={24} lg={12}>
-            <Card>
+            <Card className="h-full">
               <Title level={5} className="font-quicksand mb-4">Notification Channels</Title>
               
-              <Form.Item 
-                name="emailNotifications" 
-                valuePropName="checked"
-                label={<span className="text-xs font-medium">Email Notifications</span>}
-              >
-                <div className="flex items-center gap-2">
-                  <Switch size="small" />
-                  <Text className="text-xs">Enable email notifications</Text>
-                </div>
-              </Form.Item>
+              <div className="space-y-4">
+                <Form.Item 
+                  name="emailNotifications" 
+                  valuePropName="checked"
+                  label={<span className="text-xs font-medium">Email Notifications</span>}
+                >
+                  <div className="flex items-center gap-2">
+                    <Switch size="small" />
+                    <Text className="text-xs">Enable email notifications</Text>
+                  </div>
+                </Form.Item>
 
-              <Form.Item 
-                name="smsNotifications" 
-                valuePropName="checked"
-                label={<span className="text-xs font-medium">SMS Notifications</span>}
-              >
-                <div className="flex items-center gap-2">
-                  <Switch size="small" />
-                  <Text className="text-xs">Enable SMS notifications</Text>
-                </div>
-              </Form.Item>
+                <Form.Item 
+                  name="smsNotifications" 
+                  valuePropName="checked"
+                  label={<span className="text-xs font-medium">SMS Notifications</span>}
+                >
+                  <div className="flex items-center gap-2">
+                    <Switch size="small" />
+                    <Text className="text-xs">Enable SMS notifications</Text>
+                  </div>
+                </Form.Item>
 
-              <Form.Item 
-                name="pushNotifications" 
-                valuePropName="checked"
-                label={<span className="text-xs font-medium">Push Notifications</span>}
-              >
-                <div className="flex items-center gap-2">
-                  <Switch size="small" />
-                  <Text className="text-xs">Enable browser push notifications</Text>
-                </div>
-              </Form.Item>
+                <Form.Item 
+                  name="pushNotifications" 
+                  valuePropName="checked"
+                  label={<span className="text-xs font-medium">Push Notifications</span>}
+                >
+                  <div className="flex items-center gap-2">
+                    <Switch size="small" />
+                    <Text className="text-xs">Enable browser push notifications</Text>
+                  </div>
+                </Form.Item>
 
-              <Form.Item 
-                name="emailFrequency" 
-                label={<span className="text-xs font-medium">Email Frequency</span>}
-              >
-                <Select size="small" className="text-xs">
-                  <Select.Option value="immediate">Immediate</Select.Option>
-                  <Select.Option value="hourly">Hourly digest</Select.Option>
-                  <Select.Option value="daily">Daily digest</Select.Option>
-                  <Select.Option value="weekly">Weekly digest</Select.Option>
-                </Select>
-              </Form.Item>
+                <Form.Item 
+                  name="emailFrequency" 
+                  label={<span className="text-xs font-medium">Email Frequency</span>}
+                >
+                  <Select size="small" className="text-xs">
+                    <Select.Option value="immediate">Immediate</Select.Option>
+                    <Select.Option value="hourly">Hourly digest</Select.Option>
+                    <Select.Option value="daily">Daily digest</Select.Option>
+                    <Select.Option value="weekly">Weekly digest</Select.Option>
+                  </Select>
+                </Form.Item>
+              </div>
             </Card>
           </Col>
 
           <Col xs={24} lg={12}>
-            <Card>
+            <Card className="h-full">
               <Title level={5} className="font-quicksand mb-4">Booking Notifications</Title>
               
-              <Row gutter={[16, 16]}>
-                <Col xs={24}>
+              <div className="space-y-4">
+                <div>
                   <Text className="text-xs font-medium block mb-3">New Bookings</Text>
                   <div className="space-y-2">
                     <Form.Item name="newBookingEmail" valuePropName="checked" className="!mb-2">
@@ -106,9 +108,9 @@ const NotificationSettings: React.FC = () => {
                       </div>
                     </Form.Item>
                   </div>
-                </Col>
+                </div>
 
-                <Col xs={24}>
+                <div>
                   <Text className="text-xs font-medium block mb-3">Cancellations</Text>
                   <div className="space-y-2">
                     <Form.Item name="cancellationEmail" valuePropName="checked" className="!mb-2">
@@ -124,9 +126,9 @@ const NotificationSettings: React.FC = () => {
                       </div>
                     </Form.Item>
                   </div>
-                </Col>
+                </div>
 
-                <Col xs={24}>
+                <div>
                   <Text className="text-xs font-medium block mb-3">Payment Updates</Text>
                   <div className="space-y-2">
                     <Form.Item name="paymentEmail" valuePropName="checked" className="!mb-2">
@@ -142,86 +144,98 @@ const NotificationSettings: React.FC = () => {
                       </div>
                     </Form.Item>
                   </div>
-                </Col>
-              </Row>
-            </Card>
-          </Col>
-
-          <Col xs={24} lg={12}>
-            <Card>
-              <Title level={5} className="font-quicksand mb-4">Reminder Settings</Title>
-              
-              <Form.Item 
-                name="reminderTiming" 
-                label={<span className="text-xs font-medium">Send Reminders</span>}
-              >
-                <Checkbox.Group className="flex flex-col gap-2">
-                  <Checkbox value="24h" className="text-xs">24 hours before</Checkbox>
-                  <Checkbox value="4h" className="text-xs">4 hours before</Checkbox>
-                  <Checkbox value="2h" className="text-xs">2 hours before</Checkbox>
-                  <Checkbox value="30m" className="text-xs">30 minutes before</Checkbox>
-                </Checkbox.Group>
-              </Form.Item>
-
-              <Text className="text-xs font-medium block mb-3">Reminder Channels</Text>
-              <div className="space-y-2">
-                <Form.Item name="reminderEmail" valuePropName="checked" className="!mb-2">
-                  <div className="flex items-center gap-2">
-                    <Switch size="small" />
-                    <Text className="text-xs">Email reminders</Text>
-                  </div>
-                </Form.Item>
-                <Form.Item name="reminderSms" valuePropName="checked" className="!mb-2">
-                  <div className="flex items-center gap-2">
-                    <Switch size="small" />
-                    <Text className="text-xs">SMS reminders</Text>
-                  </div>
-                </Form.Item>
+                </div>
               </div>
             </Card>
           </Col>
 
           <Col xs={24} lg={12}>
-            <Card>
+            <Card className="h-full">
+              <Title level={5} className="font-quicksand mb-4">Reminder Settings</Title>
+              
+              <div className="space-y-4">
+                <Form.Item 
+                  name="reminderTiming" 
+                  label={<span className="text-xs font-medium">Send Reminders</span>}
+                >
+                  <Checkbox.Group className="flex flex-col gap-2">
+                    <Checkbox value="24h" className="text-xs">24 hours before</Checkbox>
+                    <Checkbox value="4h" className="text-xs">4 hours before</Checkbox>
+                    <Checkbox value="2h" className="text-xs">2 hours before</Checkbox>
+                    <Checkbox value="30m" className="text-xs">30 minutes before</Checkbox>
+                  </Checkbox.Group>
+                </Form.Item>
+
+                <div>
+                  <Text className="text-xs font-medium block mb-3">Reminder Channels</Text>
+                  <div className="space-y-2">
+                    <Form.Item name="reminderEmail" valuePropName="checked" className="!mb-2">
+                      <div className="flex items-center gap-2">
+                        <Switch size="small" />
+                        <Text className="text-xs">Email reminders</Text>
+                      </div>
+                    </Form.Item>
+                    <Form.Item name="reminderSms" valuePropName="checked" className="!mb-2">
+                      <div className="flex items-center gap-2">
+                        <Switch size="small" />
+                        <Text className="text-xs">SMS reminders</Text>
+                      </div>
+                    </Form.Item>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </Col>
+
+          <Col xs={24} lg={12}>
+            <Card className="h-full">
               <Title level={5} className="font-quicksand mb-4">Quiet Hours</Title>
               
-              <Form.Item 
-                name="quietHoursEnabled" 
-                valuePropName="checked"
-                label={<span className="text-xs font-medium">Enable Quiet Hours</span>}
-              >
-                <div className="flex items-center gap-2">
-                  <Switch size="small" />
-                  <Text className="text-xs">No notifications during quiet hours</Text>
-                </div>
-              </Form.Item>
+              <div className="space-y-4">
+                <Form.Item 
+                  name="quietHoursEnabled" 
+                  valuePropName="checked"
+                  label={<span className="text-xs font-medium">Enable Quiet Hours</span>}
+                >
+                  <div className="flex items-center gap-2">
+                    <Switch size="small" />
+                    <Text className="text-xs">No notifications during quiet hours</Text>
+                  </div>
+                </Form.Item>
 
-              <Row gutter={[16, 16]}>
-                <Col xs={12}>
-                  <Form.Item 
-                    name="quietHoursStart" 
-                    label={<span className="text-xs font-medium">Start Time</span>}
-                  >
-                    <TimePicker 
-                      format="HH:mm" 
-                      size="small" 
-                      className="w-full text-xs" 
-                    />
-                  </Form.Item>
-                </Col>
-                <Col xs={12}>
-                  <Form.Item 
-                    name="quietHoursEnd" 
-                    label={<span className="text-xs font-medium">End Time</span>}
-                  >
-                    <TimePicker 
-                      format="HH:mm" 
-                      size="small" 
-                      className="w-full text-xs" 
-                    />
-                  </Form.Item>
-                </Col>
-              </Row>
+                <Row gutter={[16, 16]}>
+                  <Col xs={12}>
+                    <Form.Item 
+                      name="quietHoursStart" 
+                      label={<span className="text-xs font-medium">Start Time</span>}
+                    >
+                      <TimePicker 
+                        format="HH:mm" 
+                        size="small" 
+                        className="w-full text-xs" 
+                      />
+                    </Form.Item>
+                  </Col>
+                  <Col xs={12}>
+                    <Form.Item 
+                      name="quietHoursEnd" 
+                      label={<span className="text-xs font-medium">End Time</span>}
+                    >
+                      <TimePicker 
+                        format="HH:mm" 
+                        size="small" 
+                        className="w-full text-xs" 
+                      />
+                    </Form.Item>
+                  </Col>
+                </Row>
+
+                <div className="pt-4 border-t border-gray-100">
+                  <Text className="text-xs text-gray-500">
+                    During quiet hours, only urgent notifications will be sent.
+                  </Text>
+                </div>
+              </div>
             </Card>
           </Col>
 

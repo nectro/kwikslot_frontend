@@ -77,7 +77,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
     {
       key: 'profile',
       icon: <UserOutlined />,
-      label: 'Profile',
+      label: <Link href="/settings/profile">Profile</Link>,
     },
     {
       key: 'logout',

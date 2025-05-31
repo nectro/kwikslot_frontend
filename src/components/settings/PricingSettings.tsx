@@ -364,7 +364,7 @@ const PricingSettings: React.FC = () => {
               </Col>
             </Row>
 
-            <div className="mt-6 pt-4 border-t">
+            <div className="mt-6 pt-4 border-t border-gray-200">
               <Row gutter={[16, 16]}>
                 <Col xs={24} sm={12}>
                   <Alert

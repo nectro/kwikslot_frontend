@@ -27,6 +27,7 @@
 
 .ant-menu-item:hover {
   background-color: rgba(78, 78, 235, 0.05) !important;
+  color: #4E4FEB !important;
 }
 
 .ant-menu-item-selected {
