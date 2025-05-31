@@ -38,12 +38,12 @@ export default function PublicLayout({ children, params }: PublicLayoutProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100">
       {/* Header */}
-      <header className="bg-white/95 backdrop-blur-sm border-b border-gray-200/60 sticky top-0 z-50 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <header className="bg-white/95 backdrop-blur-sm border-b border-gray-200/60 sticky top-0 z-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-16">
           <div className="flex justify-between items-center h-16 sm:h-18">
             {/* Logo */}
             <div className="flex items-center">
-              <div className="relative w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-brand-primary to-brand-primary/80 rounded-full flex-shrink-0 shadow-sm">
+              <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full flex-shrink-0 bg-gray-50">
                 <Image
                   src={Logo}
                   alt="KwikSlot Logo"
@@ -89,7 +89,7 @@ export default function PublicLayout({ children, params }: PublicLayoutProps) {
 
       {/* Main Content */}
       <main className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8">
-        <div className="bg-white/60 backdrop-blur-sm rounded-2xl sm:rounded-3xl shadow-sm border border-white/20 p-4 sm:p-6 lg:p-8">
+        <div className="p-4 sm:p-6 lg:p-8">
           {children}
         </div>
       </main>
@@ -109,7 +109,6 @@ export default function PublicLayout({ children, params }: PublicLayoutProps) {
         footer={
           <Button 
             type="primary" 
-            size="large"
             onClick={() => setHelpModalOpen(false)}
             className="!bg-gradient-to-r !from-brand-primary !to-brand-primary/90 !border-none !font-medium !rounded-lg w-full sm:w-auto"
           >
@@ -119,22 +118,22 @@ export default function PublicLayout({ children, params }: PublicLayoutProps) {
         width={520}
         className="mobile-modal"
       >
-        <div className="space-y-6 py-2">
+        <div className="space-y-2 py-2">
           <div className="bg-gradient-to-r from-brand-primary/5 to-brand-primary/10 p-4 rounded-xl">
             <Title level={5} className="font-quicksand !mb-2 text-gray-800">Contact {companyData.name}</Title>
-            <Text className="text-sm text-gray-600 leading-relaxed">
+            <Text className="!text-xs text-gray-600 leading-relaxed">
               Get in touch with us for any questions or assistance with your booking.
             </Text>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-2">
             <div className="flex items-start gap-4 p-3 rounded-xl hover:bg-gray-50 transition-colors">
               <div className="p-2 bg-brand-primary/10 rounded-lg flex-shrink-0">
                 <PhoneIcon size={16} className="text-brand-primary" />
               </div>
               <div>
-                <Text className="text-sm font-semibold block text-gray-800">Phone</Text>
-                <Text className="text-sm text-gray-600">{companyData.phone}</Text>
+                <Text className="!text-sm font-semibold block text-gray-800">Phone</Text>
+                <Text className="!text-sm text-gray-600">{companyData.phone}</Text>
               </div>
             </div>
 
@@ -143,8 +142,8 @@ export default function PublicLayout({ children, params }: PublicLayoutProps) {
                 <MailIcon size={16} className="text-brand-primary" />
               </div>
               <div>
-                <Text className="text-sm font-semibold block text-gray-800">Email</Text>
-                <Text className="text-sm text-gray-600">{companyData.email}</Text>
+                <Text className="!text-sm font-semibold block text-gray-800">Email</Text>
+                <Text className="!text-sm text-gray-600">{companyData.email}</Text>
               </div>
             </div>
 
@@ -153,17 +152,17 @@ export default function PublicLayout({ children, params }: PublicLayoutProps) {
                 <MapPinIcon size={16} className="text-brand-primary" />
               </div>
               <div>
-                <Text className="text-sm font-semibold block text-gray-800">Address</Text>
-                <Text className="text-sm text-gray-600">{companyData.address}</Text>
+                <Text className="!text-sm font-semibold block text-gray-800">Address</Text>
+                <Text className="!text-sm text-gray-600">{companyData.address}</Text>
               </div>
             </div>
           </div>
 
-          <Divider className="!my-5" />
+          <Divider className="!my-2" />
 
           <div className="bg-gray-50 p-4 rounded-xl">
-            <Text className="text-sm font-semibold block mb-2 text-gray-800">Business Hours</Text>
-            <Text className="text-sm text-gray-600 leading-relaxed">{companyData.hours}</Text>
+            <Text className="!text-sm font-semibold block mb-2 text-gray-800">Business Hours</Text>
+            <Text className="!text-sm text-gray-600 leading-relaxed">{companyData.hours}</Text>
           </div>
         </div>
       </Modal>
