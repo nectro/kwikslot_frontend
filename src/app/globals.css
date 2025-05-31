@@ -78,3 +78,88 @@
 .timeline-scroll::-webkit-scrollbar-thumb:hover {
   background: #999;
 }
+
+/* Booking Interface Styles */
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Booking steps customization */
+.booking-steps .ant-steps-item-finish .ant-steps-item-icon {
+  background-color: #4E4FEB !important;
+  border-color: #4E4FEB !important;
+}
+
+.booking-steps .ant-steps-item-process .ant-steps-item-icon {
+  background-color: #4E4FEB !important;
+  border-color: #4E4FEB !important;
+}
+
+/* Text clamping utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Calendar customization */
+.custom-calendar .ant-picker-calendar-date-today {
+  border-color: #4E4FEB !important;
+}
+
+.custom-calendar .ant-picker-calendar-date-selected {
+  background: #4E4FEB !important;
+  border-color: #4E4FEB !important;
+}
+
+/* Custom scrollbar for booking time slots */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Mobile modal styles */
+@media (max-width: 640px) {
+  .mobile-modal .ant-modal {
+    margin: 16px !important;
+    max-width: calc(100vw - 32px) !important;
+  }
+  .mobile-modal .ant-modal-content {
+    border-radius: 16px !important;
+  }
+  
+  .booking-success-modal .ant-modal {
+    margin: 16px !important;
+    max-width: calc(100vw - 32px) !important;
+  }
+  .booking-success-modal .ant-modal-content {
+    border-radius: 20px !important;
+  }
+}

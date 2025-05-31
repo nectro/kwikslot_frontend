@@ -180,7 +180,7 @@ export default function StaffPage() {
     >
       <div className="flex items-start gap-3">
         {/* Avatar */}
-        <Avatar size={48} className="bg-gradient-to-br from-brand-primary to-blue-400 text-white font-semibold shadow-lg flex-shrink-0">
+        <Avatar size={48} className="bg-gradient-to-br from-brand-primary to-blue-400 text-white font-semibold shadow-sm flex-shrink-0">
           {staffMember.name.split(' ').map(n => n[0]).join('')}
         </Avatar>
 

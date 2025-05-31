@@ -147,7 +147,7 @@ export default function ServicesPage() {
       <div className="flex flex-col h-full">
         {/* Header Section */}
         <div className="text-center mb-3">
-          <div className="w-12 h-12 mx-auto mb-2 bg-gradient-to-br from-brand-primary to-blue-400 rounded-full flex items-center justify-center shadow-lg">
+          <div className="w-12 h-12 mx-auto mb-2 bg-gradient-to-br from-brand-primary to-blue-400 rounded-full flex items-center justify-center shadow-sm">
             <span className="text-lg text-white font-semibold">
               {service.name.charAt(0)}
             </span>
@@ -202,7 +202,7 @@ export default function ServicesPage() {
     >
       <div className="flex items-start gap-3">
         {/* Service Icon */}
-        <div className="w-12 h-12 bg-gradient-to-br from-brand-primary to-blue-400 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+        <div className="w-12 h-12 bg-gradient-to-br from-brand-primary to-blue-400 rounded-full flex items-center justify-center flex-shrink-0 shadow-sm">
           <span className="text-lg text-white font-semibold">
             {service.name.charAt(0)}
           </span>

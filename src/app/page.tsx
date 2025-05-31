@@ -1,16 +1,20 @@
 'use client';
 
-import { Typography } from 'antd';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { Spin } from 'antd';
 
-const { Title } = Typography;
+export default function HomePage() {
+  const router = useRouter();
 
-export default function Home() {
+  useEffect(() => {
+    // Redirect to dashboard for admin access
+    router.replace('/dashboard');
+  }, [router]);
+
   return (
-      <div>
-        <Title level={2}>Dashboard</Title>
-        <Typography.Paragraph>
-          Welcome to KwikSlot Dashboard
-        </Typography.Paragraph>
-      </div>
+    <div className="min-h-screen flex items-center justify-center">
+      <Spin size="large" />
+    </div>
   );
 }

@@ -53,7 +53,7 @@ export const theme: ThemeConfig = {
       controlHeight: 40,
       paddingContentHorizontal: 12,
       activeBorderColor: '#4E4FEB',
-      hoverBorderColor: '#33DDFF', // Lighter brand blue
+      hoverBorderColor: 'rgba(78, 78, 235, 0.8)', // Lighter brand blue
       activeShadow: '0 0 0 2px rgba(78, 78, 235, 0.2)', // Brand blue with opacity
     },
     Select: {

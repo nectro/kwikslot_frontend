@@ -5,7 +5,7 @@ import '../lib/antd-patch';  // Import patch before antd
 import { ConfigProvider } from 'antd';
 import { theme } from '../lib/antd.config';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
-import MainLayout from "@/components/Layout/MainLayout";
+import ConditionalLayout from "@/components/Layout/ConditionalLayout";
 import "./globals.css";
 
 
@@ -37,9 +37,9 @@ export default function RootLayout({
       >
         <ConfigProvider theme={theme}>
           <AntdRegistry>
-            <MainLayout>
+            <ConditionalLayout>
               {children}
-            </MainLayout>
+            </ConditionalLayout>
           </AntdRegistry>
         </ConfigProvider>
       </body>
