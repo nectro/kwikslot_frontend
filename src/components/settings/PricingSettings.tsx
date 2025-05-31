@@ -286,7 +286,7 @@ const PricingSettings: React.FC = () => {
                           type="circle"
                           percent={bookingUsagePercent}
                           size={50}
-                          strokeColor="#00D4FF"
+                          strokeColor="#4E4FEB"
                           strokeWidth={6}
                           format={() => <span className="text-xs font-bold">{bookingUsagePercent}%</span>}
                         />
@@ -438,8 +438,8 @@ const PricingSettings: React.FC = () => {
                         250: <span className="text-xs">250</span>,
                         500: <span className="text-xs">500</span>,
                       }}
-                      trackStyle={{ backgroundColor: '#00D4FF' }}
-                      handleStyle={{ borderColor: '#00D4FF' }}
+                      trackStyle={{ backgroundColor: '#4E4FEB' }}
+                      handleStyle={{ borderColor: '#4E4FEB' }}
                     />
                   </div>
 

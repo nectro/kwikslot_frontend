@@ -4,7 +4,7 @@ export const theme: ThemeConfig = {
   hashed: false,
   token: {
     // Brand Colors
-    colorPrimary: '#00D4FF',      // Brand primary - Bright Blue
+    colorPrimary: '#4E4FEB',      // Brand primary - Bright Blue
     colorBgContainer: '#FFFFFF',   // Brand white
     
     // Text Colors based on brand gray
@@ -16,7 +16,7 @@ export const theme: ThemeConfig = {
     colorSuccess: '#52c41a',      // Standard green for success
     colorWarning: '#faad14',      // Standard gold for warnings
     colorError: '#ff4d4f',        // Standard red for errors
-    colorInfo: '#00D4FF',         // Using brand blue for info
+    colorInfo: '#4E4FEB',         // Using brand blue for info
     
     // Border and Background Colors
     colorBorder: '#E5E5E5',       // Light gray for borders
@@ -53,7 +53,7 @@ export const theme: ThemeConfig = {
       borderRadius: 6,
       controlHeight: 40,
       paddingContentHorizontal: 12,
-      activeBorderColor: '#00D4FF',
+      activeBorderColor: '#4E4FEB',
       hoverBorderColor: '#33DDFF', // Lighter brand blue
       activeShadow: '0 0 0 2px rgba(0, 212, 255, 0.2)', // Brand blue with opacity
     },
@@ -73,7 +73,7 @@ export const theme: ThemeConfig = {
       itemBorderRadius: 6,
       itemSelectedBg: 'rgba(0, 212, 255, 0.08)', // Brand blue with opacity
       itemActiveBg: 'rgba(0, 212, 255, 0.04)',   // Brand blue with less opacity
-      itemSelectedColor: '#00D4FF',
+      itemSelectedColor: '#4E4FEB',
       itemColor: 'rgba(72, 72, 72, 0.79)',
       fontFamily: 'var(--font-poppins)',
     },
@@ -105,24 +105,24 @@ export const theme: ThemeConfig = {
     },
     // Additional components that should respect brand colors
     Tabs: {
-      itemSelectedColor: '#00D4FF',
-      inkBarColor: '#00D4FF',
+      itemSelectedColor: '#4E4FEB',
+      inkBarColor: '#4E4FEB',
     },
     Switch: {
       handleBg: '#FFFFFF',
-      colorPrimary: '#00D4FF',
+      colorPrimary: '#4E4FEB',
       colorPrimaryHover: '#33DDFF',
     },
     Checkbox: {
       borderRadius: 4,
-      colorPrimary: '#00D4FF',
+      colorPrimary: '#4E4FEB',
     },
     Radio: {
       buttonBg: '#FFFFFF',
-      colorPrimary: '#00D4FF',
+      colorPrimary: '#4E4FEB',
     },
     Progress: {
-      defaultColor: '#00D4FF',
+      defaultColor: '#4E4FEB',
       remainingColor: '#F5F5F5',
     },
     Typography: {

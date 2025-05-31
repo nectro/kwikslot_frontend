@@ -18,7 +18,7 @@ const ServicePopularityChart: React.FC = () => {
       {
         data: [35, 20, 18, 12, 10, 5],
         backgroundColor: [
-          '#00D4FF',    // Brand primary
+          '#4E4FEB',    // Brand primary
           '#4A90E2',    // Blue
           '#F5A623',    // Orange
           '#7E57C2',    // Purple
@@ -26,7 +26,7 @@ const ServicePopularityChart: React.FC = () => {
           '#66BB6A',    // Green
         ],
         borderColor: [
-          '#00D4FF',
+          '#4E4FEB',
           '#4A90E2',
           '#F5A623',
           '#7E57C2',

@@ -1,4 +1,4 @@
-import React from 'react';
+        import React from 'react';
 import { Form, Switch, Card, Row, Col, Typography, Select, Button, Progress, Alert, List } from 'antd';
 import { DownloadOutlined, UploadOutlined, CloudSyncOutlined, SettingOutlined } from '@ant-design/icons';
 
@@ -99,7 +99,7 @@ const SystemSettings: React.FC = () => {
                   <Progress 
                     percent={24} 
                     size="small" 
-                    strokeColor="#00D4FF"
+                    strokeColor="#4E4FEB"
                     format={(percent) => <span className="text-xs">{percent}%</span>}
                   />
                   <Text className="text-xs text-gray-500">2.4 GB of 10 GB used</Text>

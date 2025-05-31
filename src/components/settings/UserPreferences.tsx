@@ -13,7 +13,7 @@ const UserPreferences: React.FC = () => {
         layout="vertical"
         initialValues={{
           theme: 'light',
-          primaryColor: '#00D4FF',
+          primaryColor: '#4E4FEB',
           fontSize: 'small',
           sidebarCollapsed: false,
           showTooltips: true,
@@ -48,7 +48,7 @@ const UserPreferences: React.FC = () => {
                 label={<span className="text-xs font-medium">Primary Color</span>}
               >
                 <Select size="small" className="text-xs">
-                  <Select.Option value="#00D4FF">KwikSlot Blue</Select.Option>
+                  <Select.Option value="#4E4FEB">KwikSlot Blue</Select.Option>
                   <Select.Option value="#52c41a">Green</Select.Option>
                   <Select.Option value="#1890ff">Blue</Select.Option>
                   <Select.Option value="#722ed1">Purple</Select.Option>

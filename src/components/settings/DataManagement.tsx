@@ -184,7 +184,7 @@ const DataManagement: React.FC = () => {
               <Progress 
                 percent={35} 
                 size="small" 
-                strokeColor="#00D4FF"
+                strokeColor="#4E4FEB"
                 format={(percent) => <span className="text-xs">{percent}% (3.5 GB of 10 GB)</span>}
               />
             </div>

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-primary: #00D4FF;
+  --color-brand-primary: #4E4FEB;
   --color-brand-secondary: #484848;
 }
 
@@ -26,12 +26,12 @@
 }
 
 .ant-menu-item:hover {
-  background-color: rgba(0, 212, 255, 0.15) !important;
+  background-color: rgba(78, 78, 235, 0.05) !important;
 }
 
 .ant-menu-item-selected {
-  background-color: rgba(0, 213, 255, 0.30) !important;
-  color: #484848 !important;
+  background-color: rgba(78, 78, 235, 0.1) !important;
+  color: #4E4FEB !important;
 }
 /* Custom scrollbar */
 ::-webkit-scrollbar {
